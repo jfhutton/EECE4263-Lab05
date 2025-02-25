@@ -30,10 +30,11 @@ const char* password = "password";  // password for brokerX's network
 int mqttPort = 1883;
 
 // Client ID of this LED controller
-String buttonClientID = "btnNode00";  // Change XX to your two-digit ID
+String buttonClientID = "btnNodeXX";  // Change XX to your two-digit ID
 
 // ID of the remote LED node
-String ledClientID = "ledNode00";  // Change XX to your two-digit ID
+String ledClientID = "ledNodeXX";  // Change XX to your two-digit ID
+compileErrorHere();  // Remove this line once you fix the "XX" above.
 
 // Commands
 String cmdOn = "on";
