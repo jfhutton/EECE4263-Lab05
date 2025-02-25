@@ -289,7 +289,7 @@ void reconnect() {
     Serial.print(") as ");
     Serial.print(ledClientID);
     Serial.print("...");
-    if (psClient.connect(ledClientID)) {
+    if (psClient.connect(ledClientID.c_str())) {
       Serial.println(" connected");
       // clientID MUST BE UNIQUE for all connected clients
       // can also include username, password if broker requires it
@@ -302,11 +302,7 @@ void reconnect() {
     } else {
       // reconnect failed so print a console message, wait, and try again
       Serial.println(" failed.");
-#ifdef LIPSCOMB
       Serial.println("Trying again in 5 sec. (Is processor whitelisted?)");
-#else
-      Serial.println("Trying again in 5 sec.");
-#endif
       // wait 5 seconds before retrying
       delay(5000);
     }

@@ -195,37 +195,38 @@ void processMQTTMessage_B(char* topic, byte* json_payload,
   if (strcmp(topic, ...) == 0) {
     compileErrorHere();  // Remove when this code updated.
   }
+}
 
-  void register_myself() {
-    // register with MQTT broker for topics of interest to this node
-    compileErrorHere();  // Remove this when code is added
-  }
+void register_myself() {
+  // register with MQTT broker for topics of interest to this node
+  compileErrorHere();  // Remove this when code is added
+}
 
-  void reconnect() {
-    // Loop until the pub-sub client connects to the MQTT broker
-    while (!psClient.connected()) {
-      // attempt to connect to MQTT broker
-      Serial.print("Connecting to MQTT broker (");
-      Serial.print(mqttBroker);
-      Serial.print(") as ");
-      Serial.print(buttonClientID);
-      Serial.print("...");
-      if (psClient.connect(buttonClientID.c_str())) {
-        Serial.println(" connected");
-        // clientID MUST BE UNIQUE for all connected clients
-        // can also include username, password if broker requires it
-        // (e.g. psClient.connect(clientID, username, password)
+void reconnect() {
+  // Loop until the pub-sub client connects to the MQTT broker
+  while (!psClient.connected()) {
+    // attempt to connect to MQTT broker
+    Serial.print("Connecting to MQTT broker (");
+    Serial.print(mqttBroker);
+    Serial.print(") as ");
+    Serial.print(buttonClientID);
+    Serial.print("...");
+    if (psClient.connect(buttonClientID.c_str())) {
+      Serial.println(" connected");
+      // clientID MUST BE UNIQUE for all connected clients
+      // can also include username, password if broker requires it
+      // (e.g. psClient.connect(clientID, username, password)
 
-        // once connected, register for topics of interest
-        register_myself();
-        sprintf(sbuf, "MQTT initialization complete\r\nReady!\r\n\r\n");
-        Serial.print(sbuf);
-      } else {
-        // reconnect failed so print a console message, wait, and try again
-        Serial.println(" failed.");
-        Serial.println("Trying again in 5 sec. (Is processor whitelisted?)");
-        // wait 5 seconds before retrying
-        delay(5000);
-      }
+      // once connected, register for topics of interest
+      register_myself();
+      sprintf(sbuf, "MQTT initialization complete\r\nReady!\r\n\r\n");
+      Serial.print(sbuf);
+    } else {
+      // reconnect failed so print a console message, wait, and try again
+      Serial.println(" failed.");
+      Serial.println("Trying again in 5 sec. (Is processor whitelisted?)");
+      // wait 5 seconds before retrying
+      delay(5000);
     }
   }
+}
