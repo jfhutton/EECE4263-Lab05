@@ -47,13 +47,12 @@
  ******************************************************************************/
 
 // included configuration file and support libraries
-#include "ButtonNode.h"  // this project's .h file
-
 #include <ArduinoJson.h>   // MQTT payloads are in JSON format
 #include <Bounce2.h>       // pushbutton debouncer library
 #include <Esp.h>           // Esp32 support
 #include <PubSubClient.h>  // MQTT client
 #include <WiFi.h>          // wi-fi support
+#include "ButtonNode.h"  // this project's .h file
 
 WiFiClient wfClient;              // create a wifi client
 PubSubClient psClient(wfClient);  // create a pub-sub object (must be
