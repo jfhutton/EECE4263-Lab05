@@ -61,12 +61,11 @@
  *
  ******************************************************************************/
 // included configuration file and support libraries
-#include "LedNode.h"  // this project's .h file
-
 #include <ArduinoJson.h>   // MQTT payloads are in JSON format
 #include <Esp.h>           // Esp32 support
 #include <PubSubClient.h>  // MQTT client
 #include <WiFi.h>          // wi-fi support
+#include "LedNode.h"  // this project's .h file
 
 WiFiClient wfClient;              // create a wifi client
 PubSubClient psClient(wfClient);  // create a pub-sub object (must be
